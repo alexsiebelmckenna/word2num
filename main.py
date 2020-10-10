@@ -61,14 +61,18 @@ def match_word2num(l):
     for item in l:
         if item in wordnumdict:
             numlist.append(wordnumdict[item])
-        else:
+        elif '/' not in item:
             split_item = item.split()
+            # if item contains 'hundred' or 'thousand', take first element and multiply by that
             if 'hundred' in split_item:
                 split_item = int(wordnumdict[split_item[0]]) * 100
             elif 'thousand' in split_item:
                 split_item = int(wordnumdict[split_item[0]]) * 1000
-                # TODO: figure out how to handle '/'
             numlist.append(split_item)
+        else:
+            split_nums = item.split('/')
+            decimal = float(int(split_nums[0])/int(split_nums[1]))
+            numlist.append(decimal)
     return numlist
 
 print(match_word2num(word_splitter(word)))
