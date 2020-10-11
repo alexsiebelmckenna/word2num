@@ -17,7 +17,8 @@ wordnumdict = {'one':1,
                 'six':6,
                 'seven':7,
                 'eight':8,
-                'nine':10,
+                'nine':9,
+                'ten':10,
                 'eleven':11,
                 'twelve':12,
                 'thirteen':13,
@@ -75,5 +76,8 @@ def match_word2num(l):
             numlist.append(decimal)
     return numlist
 
-print(match_word2num(word_splitter(word)))
+def str2num(l):
+    return sum(l)
+
+print(str2num(match_word2num(word_splitter(word))))
 
